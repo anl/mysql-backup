@@ -39,7 +39,7 @@ for db in $(echo 'show databases' | mysql -Bs); do
     dump_msgs=$((mysqldump $db > ${backup_dir}/${db}.sql) 2>&1)
     if [ -n "$dump_msgs" ]; then
 	old_ifs=$IFS
-	# Make newline the input file separator:
+	# Make newline the internal field separator:
 	IFS='
 '
 	for line in $dump_msgs; do
