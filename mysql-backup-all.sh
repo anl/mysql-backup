@@ -4,6 +4,8 @@
 
 set -e
 
+trap 'echo Exiting from error $? at line $LINENO; if [ ! -z "$dump_msgs" ] ; then echo $dump_msgs; fi' ERR
+
 function usage {
     echo "Usage: $0 -d directory"
     echo "Usage: $0 -h"
